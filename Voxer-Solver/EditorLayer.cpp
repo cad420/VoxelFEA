@@ -247,7 +247,9 @@ void EditorLayer::OnImGuiRender()
     ImGui::Text("Voxel Stats:");
     ImGui::Text("Disaplacements: x %f y %f z %f total %f",m_pixelDisplacement[0],m_pixelDisplacement[1],m_pixelDisplacement[2],m_pixelDisplacement[3]);
     ImGui::Text("Position: x %d y %d z %d",m_pixelPosition[0],m_pixelPosition[1],m_pixelPosition[2]);
-
+    // display fps info
+    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate); 
+    
     ImGui::End();
 }
 
@@ -280,7 +282,7 @@ void EditorLayer::OnAttach()
     // Ref<Texture3D> texture_v = Texture3D::Create("D:/1u/27178_202303071754242_584_584_427_uint8.raw");
     // Ref<Texture3D> texture_v = Texture3D::Create("D:/2u3l/u/27724_20230308174058_474_584_584_uint8.raw");
     // Ref<Texture3D> texture_v = Texture3D::Create("D:/4u5l/l/27328_20230309183800_631_584_584_uint8.raw");
-    Ref<Texture3D> texture_v = Texture3D::Create("D:/2u3l/u/27724_202303081740582_474_584_584_uint8.raw");
+    Ref<Texture3D> texture_v = Texture3D::Create("D:/Data/2u3l/u/27724_20230308174058_474_584_584_uint8.raw");
     // Ref<Texture3D> texture_v = Texture3D::Create("D:/2u3l/l/27724_20230308174058_474_584_584_uint8.raw");
     // Ref<Texture3D> texture_v = Texture3D::Create("E:/Dental_Engineering/voxVS/build/out/Release/assets/textures/cbct_sample_512_512_507_uint16.raw");
 

@@ -8,7 +8,9 @@
     // "cmake.buildArgs": [],
     "cmake.generator": "Visual Studio 17 2022",
     // "cmake.generator": "Visual Studio 16 2019",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "files.associations": {
+        "*.cuh": "cuda",
         "cmath": "cpp",
         "memory": "cpp",
         "xiosbase": "cpp",
@@ -97,6 +99,10 @@
         "complex": "cpp",
         "bitset": "cpp",
         "hash_map": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "future": "cpp",
+        "numeric": "cpp",
+        "ranges": "cpp",
+        "span": "cpp"
     }
 }

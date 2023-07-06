@@ -291,7 +291,7 @@ void constraintVis(Ref<Texture3D> model, ForceComponent& force,
 
     
     RawWriter showWriter(showdata,width,height,depth);
-    showWriter.write("D:/1u/constraint");
+    showWriter.write("D:/Data/1u/constraint");
 }
 
 void GeneratePick(Ref<Texture3D> model)
@@ -308,7 +308,7 @@ void GeneratePick(Ref<Texture3D> model)
 
     // auto grey = greyreader.load();
     
-    std::string show = "D:/2u3l/l/27724_20230308174058gray_474_584_584_int16.raw";
+    std::string show = "D:/Data/2u3l/l/27724_20230308174058gray_474_584_584_int16.raw";
     RawReader reader(show);
     
     auto lwidth = reader.dimensions[0];
@@ -341,7 +341,7 @@ void GeneratePick(Ref<Texture3D> model)
     }
 
     RawWriter showWriter(showdata,lwidth,lheight,ldepth);
-    showWriter.write("D:/1u/pick");
+    showWriter.write("D:/Data/1u/pick");
 }
 
 void GeneratePickResult(Ref<Texture3D> model,Ref<Texture3D> result)
@@ -390,7 +390,7 @@ void GeneratePickResult(Ref<Texture3D> model,Ref<Texture3D> result)
     }
 
     RawWriter showWriter(showdata,lwidth,lheight,ldepth);
-    showWriter.write("D:/1u/resultpick");
+    showWriter.write("D:/Data/1u/resultpick");
 }
 
 std::pair<Ref<Texture3D>,float> LoadStress(int width,int height,int depth,int scale,Ref<Texture3D> tex);
@@ -431,14 +431,14 @@ void GeneratePickStress(Ref<Texture3D> model)
     }
 
     RawWriter showWriter(showdata,lwidth,lheight,ldepth);
-    showWriter.write("D:/1u/resultstress");
+    showWriter.write("D:/Data/1u/resultstress");
 }
 
 
 void GenerateMo(Ref<Texture3D> model)
 {
-    std::string greyscale = "D:/2u3l/u/27724_20230308174058gray_474_584_584_int16.raw";
-    // std::string greyscale = "D:/1u/27178_20230307175424gray_584_584_427_int16.raw";
+    std::string greyscale = "D:/Data/2u3l/u/27724_20230308174058gray_474_584_584_int16.raw";
+    // std::string greyscale = "D:/Data/1u/27178_20230307175424gray_584_584_427_int16.raw";
     RawReader greyreader(greyscale);
     auto width = greyreader.dimensions[0];
     auto height = greyreader.dimensions[1];
@@ -523,7 +523,7 @@ void GenerateMo(Ref<Texture3D> model)
     // fclose(f);
 
     RawWriter showWriter(showdata,lwidth,lheight,ldepth);
-    showWriter.write("D:/1u/mo");
+    showWriter.write("D:/Data/1u/mo");
 }
 
 void TransferMo(Ref<Texture3D> model,std::vector<float>& outdata)
@@ -567,7 +567,7 @@ void TransferMo(Ref<Texture3D> model,std::vector<float>& outdata)
     }
     
     RawWriter showWriter(outdata,lwidth,lheight,ldepth);
-    showWriter.write("D:/1u/newmodel");
+    showWriter.write("D:/Data/1u/newmodel");
 }
 
 
@@ -928,6 +928,21 @@ void SceneHierarchyPanel::DrawComponents(Entity entity)
         ImGui::Text(component.Path.c_str());
         ImGui::Text("width: %d, height: %d, depth: %d",component.width,component.height,component.depth);
         ImGui::DragFloat("threshold",&component.Threshold,0.001,0.0f,1.0f,"%.2f");
+        // add file dialog: ImGuiFileDialog
+        if(ImGui::Button("Load"))
+        {
+            std::string file_path = FileDialogs::OpenFile("3D Texture (*.raw)\0*.raw\0");
+            if (!file_path.empty())
+            {
+                Ref<Texture3D> texture_new = Texture3D::Create(file_path);
+                component.Texture = texture_new;
+                component.width = texture_new->getWidth();
+                component.height = texture_new->getHeight();
+                component.depth = texture_new->getDepth();
+                component.inVscale = 1;
+            }
+        }
+        ImGui::SameLine();
         if(ImGui::Button("Coarsen"))
         {
             if(component.inVscale = 1)

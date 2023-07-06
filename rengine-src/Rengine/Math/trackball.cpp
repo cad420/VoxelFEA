@@ -1,4 +1,4 @@
-#include "trackball.h"
+#include "trackball.hpp"
 
 void TrackBall::trackball(float p1x, float p1y, float p2x, float p2y)
 {

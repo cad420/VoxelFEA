@@ -42,3 +42,5 @@
 
 #include "Rengine/Utils/IO/RawReader.hpp"
 #include "Rengine/Utils/IO/RawWriter.hpp"
+
+#include "Rengine/Utils/PlatformUtils.hpp"
