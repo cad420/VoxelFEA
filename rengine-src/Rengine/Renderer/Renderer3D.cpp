@@ -532,8 +532,9 @@ void Renderer3D::DrawVolume(const glm::mat4 &ProjectionMatrix,const glm::mat4 &v
     s_data_v.m_VolumeShader->SetUniformFloat3("u_rayOrigin", rayOrigin);
     s_data_v.m_VolumeShader->SetUniformFloat3("u_top", top);
     s_data_v.m_VolumeShader->SetUniformFloat3("u_bottom", bottom);
-    // s_data_v.m_VolumeShader->SetUniformFloat3("u_backgroundColor", {0.1f, 0.1f, 0.1f});
-    s_data_v.m_VolumeShader->SetUniformFloat3("u_backgroundColor", {72.f / 255.f, 90.f / 255.f, 120.f / 255.f});
+    // s_data_v.m_VolumeShader->SetUniformFloat3("u_backgroundColor", {0.9f, 0.9f, 0.9f});
+    // s_data_v.m_VolumeShader->SetUniformFloat3("u_backgroundColor", {72.f / 255.f, 90.f / 255.f, 120.f / 255.f});
+    s_data_v.m_VolumeShader->SetUniformFloat3("u_backgroundColor", {234.f / 255.f, 244.f / 255.f, 255.f / 255.f});
     s_data_v.m_VolumeShader->SetUniformFloat3("u_lightPosition", lightPosition);
     s_data_v.m_VolumeShader->SetUniformFloat3("u_materialColor", {1.0f,1.0f,1.0f});
     s_data_v.m_VolumeShader->SetUniformFloat("u_stepLength", 0.01);

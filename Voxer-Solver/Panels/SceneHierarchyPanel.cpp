@@ -636,7 +636,7 @@ void SceneHierarchyPanel::SaveIntFile(Ref<Texture3D> model, ForceComponent& forc
     // Command
     f = fopen((path + "vo.txt").c_str(), "w");
     RE_CORE_ASSERT(f, "Cant Open the file");
-    fprintf(f,"SET_SCRIPT_VERSION 2\nSET_VOXEL_SIZE %f %f %f %f\nLOAD_MATERIALS temp/material.txt\nLOAD_MODEL %d %d %d %d temp/model.txt\nSET_TOLERANCE 1e-9\nSET_MAX_ITER 10000\nSET_ALGORITHM_FEA 1 1\nSELECTION_OF_NODES\nLOAD_CONSTRAINTS temp/constraint.txt\nSELECT_NODE_3D\nPRESERVE_NODE_3D\nCOMPUTE_SED\nSOLVE\nPRINT_DISPLACEMENTS temp/displacements.txt\nFINISH",0.3,0.3,0.3,1.0,width,height,depth,nums);
+    fprintf(f,"SET_SCRIPT_VERSION 2\nSET_VOXEL_SIZE %f %f %f %f\nLOAD_MATERIALS temp/material.txt\nLOAD_MODEL %d %d %d %d temp/model.txt\nSET_TOLERANCE 1e-9\nSET_MAX_ITER 10000\nSET_ALGORITHM_FEA 1 1\nSELECTION_OF_NODES\nLOAD_CONSTRAINTS temp/constraint.txt\nSELECT_NODE_3D\nPRESERVE_NODE_3D\nCOMPUTE_SED\nSOLVE\nPRINT_DISPLACEMENTS temp/displacements.txt\nFINISH",1.0,1.0,1.0,1.0,width,height,depth,nums);
     fclose(f);
     // auto wpro = ExternalExe::Create();
     // wpro->CreateProcess("");
@@ -929,20 +929,21 @@ void SceneHierarchyPanel::DrawComponents(Entity entity)
         ImGui::Text("width: %d, height: %d, depth: %d",component.width,component.height,component.depth);
         ImGui::DragFloat("threshold",&component.Threshold,0.001,0.0f,1.0f,"%.2f");
         // add file dialog: ImGuiFileDialog
-        if(ImGui::Button("Load"))
-        {
-            std::string file_path = FileDialogs::OpenFile("3D Texture (*.raw)\0*.raw\0");
-            if (!file_path.empty())
-            {
-                Ref<Texture3D> texture_new = Texture3D::Create(file_path);
-                component.Texture = texture_new;
-                component.width = texture_new->getWidth();
-                component.height = texture_new->getHeight();
-                component.depth = texture_new->getDepth();
-                component.inVscale = 1;
-            }
-        }
-        ImGui::SameLine();
+        // if(ImGui::Button("Load"))
+        // {
+        //     std::string file_path = FileDialogs::OpenFile("3D Texture (*.raw)\0*.raw\0");
+        //     if (!file_path.empty())
+        //     {
+        //         Ref<Texture3D> texture_new = Texture3D::Create(file_path);
+        //         component.Texture = texture_new;
+        //         component.width = texture_new->getWidth();
+        //         component.height = texture_new->getHeight();
+        //         component.depth = texture_new->getDepth();
+        //         component.inVscale = 1;
+        //         component.Path = file_path;
+        //     }
+        // }
+        // ImGui::SameLine();
         if(ImGui::Button("Coarsen"))
         {
             if(component.inVscale = 1)

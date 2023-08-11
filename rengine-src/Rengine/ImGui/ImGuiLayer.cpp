@@ -57,6 +57,40 @@ void ImGuiLayer::SetDarkThemeColors()
     
 }
 
+void ImGuiLayer::SetLightThemeColors()
+{
+    auto& colors = ImGui::GetStyle().Colors;
+
+    colors[ImGuiCol_WindowBg] = ImVec4{0.95f,0.95f,0.95f,1.0f};
+
+    //Headers
+    colors[ImGuiCol_Header] = ImVec4{0.8f,0.8f,0.8f,1.0f};
+    colors[ImGuiCol_HeaderHovered] = ImVec4{0.9f,0.9f,0.9f,1.0f};
+    colors[ImGuiCol_HeaderActive] = ImVec4{0.7f,0.7f,0.7f,1.0f};
+
+    //Buttons
+    colors[ImGuiCol_Button] = ImVec4{0.8f,0.8f,0.8f,1.0f};
+    colors[ImGuiCol_ButtonHovered] = ImVec4{0.9f,0.9f,0.9f,1.0f};
+    colors[ImGuiCol_ButtonActive] = ImVec4{0.7f,0.7f,0.7f,1.0f};
+
+    //Frame BG
+    colors[ImGuiCol_FrameBg] = ImVec4{0.8f,0.8f,0.8f,1.0f};
+    colors[ImGuiCol_FrameBgHovered] = ImVec4{0.9f,0.9f,0.9f,1.0f};
+    colors[ImGuiCol_FrameBgActive] = ImVec4{0.7f,0.7f,0.7f,1.0f};
+
+    //Tabs
+    colors[ImGuiCol_Tab] = ImVec4{0.7f,0.7f,0.7f,1.0f};
+    colors[ImGuiCol_TabHovered] = ImVec4{0.8f,0.8f,0.8f,1.0f};
+    colors[ImGuiCol_TabActive] = ImVec4{0.6f,0.6f,0.6f,1.0f};
+    colors[ImGuiCol_TabUnfocused] = ImVec4{0.7f,0.7f,0.7f,1.0f};
+    colors[ImGuiCol_TabUnfocusedActive] = ImVec4{0.8f,0.8f,0.8f,1.0f};
+
+    //Title
+    // colors[ImGuiCol_TitleBg] = ImVec4{0.7f,0.7f,0.7f,1.0f};
+    // colors[ImGuiCol_TitleBgActive] = ImVec4{0.7f,0.7f,0.7f,1.0f};
+    // colors[ImGuiCol_TitleBgCollapsed] = ImVec4{0.7f,0.7f,0.7f,1.0f};
+}
+
 void ImGuiLayer::OnAttach()
 {
     RE_PROFILE_FUNCTION();
@@ -72,7 +106,8 @@ void ImGuiLayer::OnAttach()
     io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/static/OpenSans/OpenSans-Bold.ttf",18.0f);
     io.FontDefault = io.Fonts->AddFontFromFileTTF("assets/fonts/opensans/static/OpenSans/OpenSans-Regular.ttf",18.0f);
 
-    ImGui::StyleColorsDark();
+    // ImGui::StyleColorsDark();
+    ImGui::StyleColorsLight();
 
     ImGuiStyle& style = ImGui::GetStyle();
 
@@ -82,7 +117,8 @@ void ImGuiLayer::OnAttach()
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
 
-    SetDarkThemeColors();
+    // SetDarkThemeColors();
+    SetLightThemeColors();
 
     auto& app = Application::getApplication();
     auto* window = static_cast<GLFWwindow*>(app.getWindow().getNativeWindow());

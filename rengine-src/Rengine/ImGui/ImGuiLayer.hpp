@@ -20,6 +20,7 @@ public:
     ~ImGuiLayer();
 
     void SetDarkThemeColors();
+    void SetLightThemeColors();
     virtual void OnAttach() override;
     virtual void OnDetach() override;
     virtual void OnEvent(Event& ev)override;

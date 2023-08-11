@@ -44,7 +44,9 @@ void EditorLayer::OnUpdate(TimeStep timestep)
     Renderer2D::resetStats();
 
     m_framebuffer->Bind();
-    RenderCommand::SetClearColor({72.f / 255.f, 90.f / 255.f, 120.f / 255.f, 1.0f});
+    // RenderCommand::SetClearColor({72.f / 255.f, 90.f / 255.f, 120.f / 255.f, 1.0f});
+    RenderCommand::SetClearColor({234.f / 255.f, 244.f / 255.f, 255.f / 255.f, 1.0f});
+    // RenderCommand::SetClearColor({1.0f, 1.0f, 1.0f, 1.0f});
     RenderCommand::Clear();
  
 
@@ -283,7 +285,7 @@ void EditorLayer::OnAttach()
     // Ref<Texture3D> texture_v = Texture3D::Create("D:/2u3l/u/27724_20230308174058_474_584_584_uint8.raw");
     // Ref<Texture3D> texture_v = Texture3D::Create("D:/4u5l/l/27328_20230309183800_631_584_584_uint8.raw");
     Ref<Texture3D> texture_v = Texture3D::Create("D:/Data/2u3l/u/27724_20230308174058_474_584_584_uint8.raw");
-    // Ref<Texture3D> texture_v = Texture3D::Create("D:/2u3l/l/27724_20230308174058_474_584_584_uint8.raw");
+    // Ref<Texture3D> texture_v = Texture3D::Create("D:/Data/2u3l/l/27724_20230308174058_474_584_584_uint8.raw");
     // Ref<Texture3D> texture_v = Texture3D::Create("E:/Dental_Engineering/voxVS/build/out/Release/assets/textures/cbct_sample_512_512_507_uint16.raw");
 
     // Entity

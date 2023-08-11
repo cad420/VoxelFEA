@@ -21,6 +21,7 @@ uniform vec3 u_materialColor;
 uniform vec3 u_lightPosition;
 
 uniform float u_stepLength;
+uniform int u_Choose;
 
 uniform sampler3D u_volume;
 uniform sampler3D u_Force;
@@ -157,8 +158,15 @@ void main()
     bool positionOK = false;
     // float cnt = 0;
     o_position = ivec3(-1,-1,-1);
+    // o_color = vec4(1,1,1,1);
     while (ray_length > 0 && color.a < 1.0) {
         float intensity = texture(u_volume, position).r;
+        if(((1 << (int(intensity) - 1)) & u_Choose) == 0)
+        {
+            ray_length -= u_stepLength;
+            position += step_vector;
+            continue;
+        }
         vec4 c = color_transfer(intensity / u_maxvalue);
         // c.a = 1.0;
         // color = c;
@@ -188,7 +196,7 @@ void main()
 
         float Ia = 0.1;
         float Id = 1.0 * max(0, dot(N, L));
-        float Is = 8.0 * pow(max(0, dot(N, H)), 600);
+        float Is = 8.0 * pow(max(0, dot(N, H)), 2);
 
         color.rgb = c.a * c.rgb + (1 - c.a) * color.a * (color.rgb + (Ia + Id) * u_materialColor * 0.1 + Is * vec3(0.1));
         color.a = c.a + (1 - c.a) * color.a;

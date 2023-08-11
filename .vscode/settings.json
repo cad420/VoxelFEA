@@ -103,6 +103,14 @@
         "future": "cpp",
         "numeric": "cpp",
         "ranges": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "acceleratesupport": "cpp",
+        "cholmodsupport": "cpp",
+        "core": "cpp",
+        "pastixsupport": "cpp",
+        "*.main": "cpp",
+        "threadpool": "cpp",
+        "mprealsupport": "cpp",
+        "matrixfunctions": "cpp"
     }
 }
